@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIN2VA — Asesmen HOTS SPLDV</title>
+<meta name="description" content="LIN2VA: Media pembelajaran & asesmen HOTS SPLDV berbasis web untuk siswa SMP.">
+<meta name="author" content="Idayya671">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- SheetJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<!-- MathJax -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- KREDIT -->
+<div class="app-credit">Developed by <strong>Idayya671</strong></div>
+
+<!-- BG ANIMASI -->
+<div class="bg-animation" aria-hidden="true">
+  <span>x + y = 10</span>
+  <span>2x − y = 5</span>
+  <span>SPLDV</span>
+  <span>3x + 2y</span>
+  <span>x = ?</span>
+  <span>∑ Linear</span>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-badge">Matematika SMP</div>
+  <h1>📘 LIN2VA</h1>
+  <p>Asesmen HOTS · Sistem Persamaan Linear Dua Variabel</p>
+</header>
+
+<div class="container">
+
+  <!-- ============================== LAYAR HOME ============================== -->
+  <section id="home-screen" class="card fade-in">
+
+    <div class="home-hero">
+      <div class="hero-icon">📐</div>
+      <h2>Selamat Datang di LIN2VA</h2>
+      <p>Platform asesmen HOTS materi SPLDV yang mengukur kemampuan <strong>Analisis (C4)</strong>, <strong>Evaluasi (C5)</strong>, dan <strong>Kreasi (C6)</strong> siswa SMP.</p>
+    </div>
+
+    <div class="home-nav-grid">
+      <button class="nav-card" onclick="showMateri()">
+        <span class="nav-icon">📖</span>
+        <div>
+          <b>Pelajari Materi</b>
+          <small>Materi SPLDV lengkap sebelum asesmen</small>
+        </div>
+        <span class="nav-arrow">→</span>
+      </button>
+
+      <button class="nav-card accent" onclick="showAsesmen()">
+        <span class="nav-icon">✏️</span>
+        <div>
+          <b>Mulai Asesmen HOTS</b>
+          <small>15 PG + 5 Uraian · C4, C5, C6</small>
+        </div>
+        <span class="nav-arrow">→</span>
+      </button>
+
+      <button class="nav-card" onclick="showDashboard()">
+        <span class="nav-icon">📊</span>
+        <div>
+          <b>Dashboard Nilai</b>
+          <small>Rekapitulasi hasil seluruh siswa</small>
+        </div>
+        <span class="nav-arrow">→</span>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ============================== LAYAR MATERI ============================== -->
+  <section id="materi-screen" class="card hidden fade-in">
+
+    <div class="materi-header">
+      <button class="btn-back" onclick="kembaliHome()">← Kembali</button>
+      <h2>📖 Materi SPLDV</h2>
+      <p>Sistem Persamaan Linear Dua Variabel</p>
+    </div>
+
+    <!-- NAV TAB -->
+    <div class="tab-nav" id="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('tab-pengertian', this)">Pengertian</button>
+      <button class="tab-btn" onclick="switchTab('tab-metode', this)">Metode</button>
+      <button class="tab-btn" onclick="switchTab('tab-contoh', this)">Contoh Soal</button>
+      <button class="tab-btn" onclick="switchTab('tab-hots', this)">HOTS C4–C6</button>
+    </div>
+
+    <!-- TAB: PENGERTIAN -->
+    <div id="tab-pengertian" class="tab-content active">
+
+      <div class="materi-section">
+        <h3>🔷 Apa itu SPLDV?</h3>
+        <p>
+          <strong>Sistem Persamaan Linear Dua Variabel (SPLDV)</strong> adalah dua atau lebih persamaan linear yang memiliki dua variabel yang sama dan dicari nilai yang memenuhi semua persamaan secara bersamaan.
+        </p>
+        <div class="formula-box">
+          <code>ax + by = c</code>
+          <code>dx + ey = f</code>
+          <p>di mana <em>x</em> dan <em>y</em> adalah variabel, sedangkan <em>a, b, c, d, e, f</em> adalah konstanta.</p>
+        </div>
+      </div>
+
+      <div class="materi-section">
+        <h3>🔷 Syarat SPLDV</h3>
+        <ul class="materi-list">
+          <li>Terdapat tepat <strong>dua variabel</strong> (biasanya x dan y)</li>
+          <li>Masing-masing variabel berpangkat <strong>satu (linear)</strong></li>
+          <li>Terdiri dari <strong>minimal dua persamaan</strong></li>
+          <li>Solusi memenuhi <strong>semua persamaan</strong> secara bersamaan</li>
+        </ul>
+      </div>
+
+      <div class="materi-section">
+        <h3>🔷 Solusi SPLDV</h3>
+        <div class="solution-types">
+          <div class="sol-card sol-one">
+            <span class="sol-icon">✅</span>
+            <h4>Tepat Satu Solusi</h4>
+            <p>Dua garis berpotongan di satu titik. Inilah kasus paling umum dalam masalah nyata.</p>
+          </div>
+          <div class="sol-card sol-none">
+            <span class="sol-icon">❌</span>
+            <h4>Tidak Ada Solusi</h4>
+            <p>Dua garis sejajar (tidak berpotongan). Persamaan bertentangan satu sama lain.</p>
+          </div>
+          <div class="sol-card sol-inf">
+            <span class="sol-icon">♾️</span>
+            <h4>Tak Hingga Solusi</h4>
+            <p>Dua garis berimpit (satu sama lain). Semua titik pada garis adalah solusi.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="materi-section">
+        <h3>🔷 Pemodelan Matematika</h3>
+        <p>Langkah membuat model SPLDV dari masalah nyata:</p>
+        <div class="step-list">
+          <div class="step-item"><span class="step-num">1</span><div><b>Pahami masalah</b> — baca soal dengan teliti dan identifikasi apa yang dicari.</div></div>
+          <div class="step-item"><span class="step-num">2</span><div><b>Tentukan variabel</b> — misalkan x = ... dan y = ... secara jelas.</div></div>
+          <div class="step-item"><span class="step-num">3</span><div><b>Bentuk persamaan</b> — nyatakan dua hubungan matematika dari data soal.</div></div>
+          <div class="step-item"><span class="step-num">4</span><div><b>Selesaikan SPLDV</b> — gunakan metode yang tepat (eliminasi/substitusi).</div></div>
+          <div class="step-item"><span class="step-num">5</span><div><b>Verifikasi</b> — cek kembali ke persamaan awal dan ke konteks soal.</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TAB: METODE -->
+    <div id="tab-metode" class="tab-content hidden">
+
+      <div class="materi-section">
+        <h3>⚡ Metode Substitusi</h3>
+        <p>Nyatakan satu variabel dalam bentuk variabel lain, lalu substitusikan ke persamaan kedua.</p>
+        <div class="metode-steps">
+          <div class="m-step"><b>Langkah 1:</b> Dari salah satu persamaan, nyatakan x dalam y (atau sebaliknya).</div>
+          <div class="m-step"><b>Langkah 2:</b> Substitusikan ke persamaan lainnya → peroleh nilai satu variabel.</div>
+          <div class="m-step"><b>Langkah 3:</b> Masukkan nilai tersebut ke persamaan tadi → peroleh variabel satunya.</div>
+        </div>
+        <div class="contoh-mini">
+          <p><strong>Contoh:</strong> x + y = 10 dan x − y = 4</p>
+          <p>Dari persamaan 1: x = 10 − y</p>
+          <p>Substitusi: (10 − y) − y = 4 → 10 − 2y = 4 → y = 3</p>
+          <p>Maka: x = 10 − 3 = <strong>7</strong></p>
+          <p class="check">✅ Cek: 7 + 3 = 10 ✓ dan 7 − 3 = 4 ✓</p>
+        </div>
+        <div class="tips-box">💡 <b>Tips:</b> Gunakan substitusi jika salah satu variabel sudah memiliki koefisien 1.</div>
+      </div>
+
+      <div class="materi-section">
+        <h3>⚡ Metode Eliminasi</h3>
+        <p>Hapus (eliminasi) satu variabel dengan menjumlah atau mengurangkan kedua persamaan.</p>
+        <div class="metode-steps">
+          <div class="m-step"><b>Langkah 1:</b> Samakan koefisien variabel yang akan dieliminasi (kalikan jika perlu).</div>
+          <div class="m-step"><b>Langkah 2:</b> Jumlahkan/kurangkan dua persamaan → satu variabel tereliminasi.</div>
+          <div class="m-step"><b>Langkah 3:</b> Selesaikan persamaan satu variabel → substitusi balik untuk variabel lain.</div>
+        </div>
+        <div class="contoh-mini">
+          <p><strong>Contoh:</strong> 2x + y = 11 dan 2x − y = 5</p>
+          <p>Kurangkan kedua persamaan: (2x + y) − (2x − y) = 11 − 5</p>
+          <p>→ 2y = 6 → <strong>y = 3</strong></p>
+          <p>Substitusi ke pers. 1: 2x + 3 = 11 → x = <strong>4</strong></p>
+          <p class="check">✅ Cek: 2(4) + 3 = 11 ✓ dan 2(4) − 3 = 5 ✓</p>
+        </div>
+        <div class="tips-box">💡 <b>Tips:</b> Gunakan eliminasi jika koefisien salah satu variabel sama atau mudah disamakan.</div>
+      </div>
+
+      <div class="materi-section">
+        <h3>⚡ Metode Campuran</h3>
+        <p>Kombinasi eliminasi dan substitusi. Gunakan eliminasi untuk mencari satu variabel, lalu substitusi untuk mencari variabel lainnya.</p>
+        <div class="tips-box">💡 <b>Kapan digunakan?</b> Paling sering digunakan dalam soal-soal HOTS karena lebih fleksibel dan efisien untuk koefisien besar.</div>
+      </div>
+
+      <div class="materi-section">
+        <h3>⚡ Perbandingan Metode</h3>
+        <div class="compare-table">
+          <table>
+            <thead><tr><th>Metode</th><th>Keunggulan</th><th>Kapan Pakai</th></tr></thead>
+            <tbody>
+              <tr><td>Substitusi</td><td>Mudah dipahami</td><td>Koefisien = 1</td></tr>
+              <tr><td>Eliminasi</td><td>Cepat &amp; efisien</td><td>Koefisien sama</td></tr>
+              <tr><td>Campuran</td><td>Paling fleksibel</td><td>Koefisien besar</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TAB: CONTOH SOAL -->
+    <div id="tab-contoh" class="tab-content hidden">
+
+      <div class="materi-section">
+        <h3>📝 Contoh 1 — Masalah Harga Barang</h3>
+        <div class="soal-box">
+          <p>Di kantin sekolah, <strong>2 roti dan 3 susu seharga Rp21.000</strong>, sedangkan <strong>1 roti dan 2 susu seharga Rp13.000</strong>. Tentukan harga satu roti dan satu susu!</p>
+        </div>
+        <div class="penyelesaian">
+          <h4>📌 Penyelesaian:</h4>
+          <p>Misalkan: <em>x</em> = harga roti, <em>y</em> = harga susu</p>
+          <div class="formula-box">
+            <code>2x + 3y = 21.000 ... (1)</code>
+            <code>x + 2y = 13.000 ... (2)</code>
+          </div>
+          <p><strong>Eliminasi x:</strong> Kalikan pers. (2) × 2:</p>
+          <div class="formula-box">
+            <code>2x + 3y = 21.000</code>
+            <code>2x + 4y = 26.000 −</code>
+            <code>−y = −5.000 → y = 5.000</code>
+          </div>
+          <p><strong>Substitusi</strong> y = 5.000 ke pers. (2):</p>
+          <div class="formula-box">
+            <code>x + 2(5.000) = 13.000</code>
+            <code>x = 13.000 − 10.000 = 3.000</code>
+          </div>
+          <div class="kesimpulan-box">
+            <p>✅ <strong>Kesimpulan:</strong> Harga roti = Rp3.000 dan harga susu = Rp5.000</p>
+            <p>Verifikasi: 2(3000) + 3(5000) = 6000 + 15000 = 21.000 ✓</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="materi-section">
+        <h3>📝 Contoh 2 — Masalah Parkir</h3>
+        <div class="soal-box">
+          <p>Tarif parkir untuk <strong>3 motor dan 2 mobil adalah Rp19.000</strong>. Tarif untuk <strong>1 motor dan 4 mobil adalah Rp23.000</strong>. Tentukan tarif parkir motor dan mobil!</p>
+        </div>
+        <div class="penyelesaian">
+          <h4>📌 Penyelesaian:</h4>
+          <p>Misalkan: <em>x</em> = tarif motor, <em>y</em> = tarif mobil</p>
+          <div class="formula-box">
+            <code>3x + 2y = 19.000 ... (1)</code>
+            <code>x + 4y = 23.000 ... (2)</code>
+          </div>
+          <p><strong>Eliminasi x:</strong> Pers. (2) × 3:</p>
+          <div class="formula-box">
+            <code>3x + 2y = 19.000</code>
+            <code>3x + 12y = 69.000 −</code>
+            <code>−10y = −50.000 → y = 5.000</code>
+          </div>
+          <p><strong>Substitusi</strong> y = 5.000 ke pers. (2):</p>
+          <div class="formula-box">
+            <code>x + 4(5.000) = 23.000 → x = 3.000</code>
+          </div>
+          <div class="kesimpulan-box">
+            <p>✅ <strong>Kesimpulan:</strong> Tarif motor = Rp3.000 dan tarif mobil = Rp5.000</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TAB: HOTS C4-C6 -->
+    <div id="tab-hots" class="tab-content hidden">
+
+      <div class="materi-section">
+        <h3>🧠 Apa itu HOTS?</h3>
+        <p><strong>Higher Order Thinking Skills (HOTS)</strong> adalah kemampuan berpikir tingkat tinggi yang melampaui sekadar hafalan. Dalam taksonomi Bloom, HOTS mencakup level <strong>C4 (Analisis)</strong>, <strong>C5 (Evaluasi)</strong>, dan <strong>C6 (Kreasi)</strong>.</p>
+      </div>
+
+      <div class="hots-cards">
+
+        <div class="hots-card c4">
+          <div class="hots-header">
+            <span class="hots-badge">C4</span>
+            <h3>ANALISIS</h3>
+          </div>
+          <p>Kemampuan memecah informasi menjadi bagian-bagian dan melihat hubungan di antara bagian tersebut.</p>
+          <h4>Dalam konteks SPLDV:</h4>
+          <ul>
+            <li>Menganalisis model SPLDV dari masalah kontekstual</li>
+            <li>Membedakan operasi yang tepat (+/−) dalam persamaan</li>
+            <li>Mengidentifikasi makna solusi (x, y) dalam konteks nyata</li>
+            <li>Menganalisis urutan langkah penyelesaian</li>
+            <li>Memeriksa kewajaran hasil solusi</li>
+          </ul>
+          <div class="contoh-hots">
+            <b>Contoh pertanyaan C4:</b> "Seorang siswa menulis model 3x − 2y = 19.000 untuk soal harga buku dan pensil. Analisis apakah model tersebut tepat!"
+          </div>
+        </div>
+
+        <div class="hots-card c5">
+          <div class="hots-header">
+            <span class="hots-badge">C5</span>
+            <h3>EVALUASI</h3>
+          </div>
+          <p>Kemampuan membuat penilaian berdasarkan kriteria atau standar, termasuk menentukan efektivitas suatu pendekatan.</p>
+          <h4>Dalam konteks SPLDV:</h4>
+          <ul>
+            <li>Menilai metode penyelesaian mana yang paling efektif</li>
+            <li>Membandingkan dua strategi berbeda</li>
+            <li>Memvalidasi kebenaran proses penyelesaian</li>
+            <li>Mengevaluasi kewajaran solusi dalam konteks nyata</li>
+            <li>Menilai pentingnya verifikasi jawaban</li>
+          </ul>
+          <div class="contoh-hots">
+            <b>Contoh pertanyaan C5:</b> "Evaluasilah apakah hasil harga pensil = Rp−1.000 masuk akal. Jelaskan kemungkinan kesalahan yang terjadi!"
+          </div>
+        </div>
+
+        <div class="hots-card c6">
+          <div class="hots-header">
+            <span class="hots-badge">C6</span>
+            <h3>KREASI</h3>
+          </div>
+          <p>Kemampuan menyusun elemen-elemen menjadi keseluruhan yang baru dan orisinal, baik dalam bentuk produk, rencana, maupun ide.</p>
+          <h4>Dalam konteks SPLDV:</h4>
+          <ul>
+            <li>Membuat soal cerita SPLDV yang kontekstual</li>
+            <li>Menyusun model matematika dari situasi baru</li>
+            <li>Mengembangkan solusi kreatif untuk masalah nyata</li>
+            <li>Mengkonstruksi persamaan dari data yang tersedia</li>
+            <li>Merancang situasi yang dapat dimodelkan SPLDV</li>
+          </ul>
+          <div class="contoh-hots">
+            <b>Contoh pertanyaan C6:</b> "Buatlah soal cerita SPLDV tentang kegiatan di sekolahmu. Tuliskan variabel, model, penyelesaian, dan kesimpulannya!"
+          </div>
+        </div>
+
+      </div>
+
+      <div class="materi-section">
+        <h3>📋 Struktur Asesmen HOTS</h3>
+        <div class="struktur-detail">
+          <div class="str-row">
+            <div class="str-col">
+              <h4>📌 Pilihan Ganda (15 soal)</h4>
+              <table class="str-table">
+                <tr><th>Level</th><th>Jumlah</th><th>Fokus</th></tr>
+                <tr><td><span class="badge-c4">C4</span></td><td>5 soal</td><td>Analisis model & langkah</td></tr>
+                <tr><td><span class="badge-c5">C5</span></td><td>5 soal</td><td>Evaluasi metode & solusi</td></tr>
+                <tr><td><span class="badge-c6">C6</span></td><td>5 soal</td><td>Kreasi soal & model</td></tr>
+              </table>
+            </div>
+            <div class="str-col">
+              <h4>✍️ Uraian (5 soal)</h4>
+              <table class="str-table">
+                <tr><th>Level</th><th>Jumlah</th><th>Bobot</th></tr>
+                <tr><td><span class="badge-c4">C4</span></td><td>2 soal</td><td>Skor 0−4</td></tr>
+                <tr><td><span class="badge-c5">C5</span></td><td>2 soal</td><td>Skor 0−4</td></tr>
+                <tr><td><span class="badge-c6">C6</span></td><td>1 soal</td><td>Skor 0−4</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="formula-box" style="margin-top:16px;">
+            <code>Nilai PG = (Benar / 15) × 100</code>
+            <code>Nilai Esai = (Total Skor / 20) × 100</code>
+            <code>Nilai Akhir = (Nilai PG + Nilai Esai) / 2</code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="materi-footer">
+      <p>Sudah siap mengerjakan asesmen?</p>
+      <button onclick="showAsesmen()" class="btn-primary">✏️ Mulai Asesmen HOTS →</button>
+    </div>
+
+  </section>
+
+  <!-- ============================== LAYAR ASESMEN (INPUT SISWA) ============================== -->
+  <section id="asesmen-screen" class="card hidden fade-in">
+
+    <div class="materi-header">
+      <button class="btn-back" onclick="kembaliHome()">← Kembali</button>
+      <h2>✏️ Asesmen HOTS SPLDV</h2>
+      <p>Masukkan data diri sebelum mulai mengerjakan</p>
+    </div>
+
+    <!-- INDIKATOR SINGKAT -->
+    <div class="indikator-box">
+      <h3>🎯 Yang akan diukur dalam asesmen ini</h3>
+      <div class="indikator-grid">
+        <div class="indikator-item c4">
+          <div class="indikator-header">
+            <span class="badge-level">C4</span>
+            <span class="level-name">ANALISIS</span>
+          </div>
+          <ul>
+            <li>Menganalisis model SPLDV</li>
+            <li>Menganalisis kesalahan penyelesaian</li>
+            <li>Mengidentifikasi makna solusi</li>
+            <li>Mengecek hubungan antar variabel</li>
+          </ul>
+        </div>
+        <div class="indikator-item c5">
+          <div class="indikator-header">
+            <span class="badge-level">C5</span>
+            <span class="level-name">EVALUASI</span>
+          </div>
+          <ul>
+            <li>Menilai metode SPLDV</li>
+            <li>Membandingkan strategi</li>
+            <li>Memvalidasi hasil</li>
+            <li>Mengevaluasi kewajaran solusi</li>
+          </ul>
+        </div>
+        <div class="indikator-item c6">
+          <div class="indikator-header">
+            <span class="badge-level">C6</span>
+            <span class="level-name">KREASI</span>
+          </div>
+          <ul>
+            <li>Membuat soal SPLDV</li>
+            <li>Menyusun model matematika</li>
+            <li>Mengembangkan solusi kreatif</li>
+            <li>Mengkonstruksi persamaan</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="struktur-asesmen">
+        <h4>📝 Struktur Asesmen</h4>
+        <div class="struktur-grid">
+          <div class="str-item"><span class="str-icon">📌</span><div><b>15 Pilihan Ganda</b><small>C4 (5) · C5 (5) · C6 (5)</small></div></div>
+          <div class="str-item"><span class="str-icon">✍️</span><div><b>5 Soal Uraian</b><small>C4 (2) · C5 (2) · C6 (1)</small></div></div>
+          <div class="str-item"><span class="str-icon">⏱️</span><div><b>Durasi</b><small>PG 60 detik · Esai 120 detik</small></div></div>
+        </div>
+      </div>
+    </div>
+
+    <input type="text" id="nama" placeholder="Masukkan Nama Lengkap">
+    <input type="text" id="kelas" placeholder="Masukkan Kelas (contoh: IX-A)">
+    <button onclick="mulaiQuiz()" class="btn-primary">🚀 Mulai Asesmen</button>
+
+  </section>
+
+  <!-- ============================== LAYAR QUIZ ============================== -->
+  <section id="quiz-screen" class="card hidden fade-in">
+
+    <div id="timer-box">⏳ Waktu: <span id="timer">60</span> detik</div>
+
+    <div class="top-bar">
+      <span id="nomor">Soal 1 / 20</span>
+      <span id="score">Skor: 0</span>
+    </div>
+
+    <div class="progress-label" id="progress-label">Progres: 0 / 20 soal</div>
+    <div class="progress-box"><div id="progress"></div></div>
+
+    <div id="soal-badge" class="soal-badge"></div>
+    <h3 id="question"></h3>
+    <div id="options"></div>
+
+    <div id="feedback" class="feedback hidden"></div>
+    <div id="feedback-countdown" class="feedback-countdown hidden"></div>
+
+    <div id="essay-box" class="hidden">
+      <textarea id="essay-answer" placeholder="Tuliskan jawabanmu di sini..."></textarea>
+      <button onclick="submitEssay()">📝 Kirim Jawaban</button>
+    </div>
+
+    <button id="nextBtn" class="hidden">Soal Berikutnya</button>
+
+  </section>
+
+  <!-- ============================== LAYAR HASIL ============================== -->
+  <section id="result-screen" class="card hidden fade-in">
+    <div class="result-icon">🎉</div>
+    <h2>Asesmen Selesai!</h2>
+    <h3 id="finalName"></h3>
+    <p id="finalClass"></p>
+    <div id="finalScore"></div>
+    <p id="motivasi"></p>
+    <div id="detail-penilaian"></div>
+  </section>
+
+  <!-- ============================== LAYAR DASHBOARD ============================== -->
+  <section id="dashboard-screen" class="card hidden fade-in">
+
+    <div class="materi-header">
+      <button class="btn-back" onclick="kembaliHome()">← Kembali</button>
+      <h2>📊 Dashboard Hasil Siswa</h2>
+      <p>Rekapitulasi hasil asesmen HOTS SPLDV</p>
+    </div>
+
+    <div id="cloud-status" class="cloud-status">⏳ Menghubungkan ke database...</div>
+
+    <canvas id="nilaiChart" height="120"></canvas>
+    <br>
+    <div id="dashboard-data"></div>
+    <br>
+
+    <div class="dash-actions">
+      <button onclick="hapusDashboard()">🗑 Hapus Data</button>
+      <button onclick="exportExcel()">📥 Export Excel</button>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- FIREBASE CONFIG -->
+<script src="firebase-config.js"></script>
+<!-- DASHBOARD -->
+<script src="dashboard.js"></script>
+<!-- MAIN APP -->
+<script src="script.js"></script>
+
+</body>
+</html>
