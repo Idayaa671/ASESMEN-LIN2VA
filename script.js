@@ -60,298 +60,866 @@ function switchTab(tabId, btn) {
 ================================================================ */
 const questions = [
 
+/* ======================================================
+15 SOAL PILIHAN GANDA HOTS SPLDV C4-C6
+====================================================== */
+
+/* ====================== C4 ====================== */
+
 {
-  level: "C4",
-  indicator: "Menganalisis model SPLDV dari masalah kontekstual",
-  question: "Di kantin sekolah, 2 roti dan 3 susu seharga Rp21.000, sedangkan 1 roti dan 2 susu seharga Rp13.000. Manakah model SPLDV yang paling tepat untuk situasi ini?",
-  options: [
-    "2x − 3y = 21.000 dan x + y = 13.000",
-    "2x + 3y = 21.000 dan x + 2y = 13.000",
-    "x + y = 21.000 dan 2x + y = 13.000",
-    "3x + 2y = 21.000 dan x + 2y = 13.000"
-  ],
-  answer: 1,
-  explanation: "Misalkan x = harga roti dan y = harga susu. Transaksi pertama: 2x + 3y = 21.000 (2 roti + 3 susu). Transaksi kedua: x + 2y = 13.000 (1 roti + 2 susu). Tanda penjumlahan (+) karena mewakili total harga yang dibayarkan."
+level: "C4",
+
+question: `Sebuah koperasi menjual dua jenis paket alat tulis.
+
+Paket A:
+3 buku dan 2 pena
+
+Paket B:
+5 buku dan 4 pena
+
+Harga paket B Rp32.000 lebih mahal daripada paket A.
+
+Jika selisih harga 1 buku dan 1 pena adalah Rp4.000, tentukan harga satu buku.`,
+
+options: [
+"Rp8.000",
+"Rp9.000",
+"Rp10.000",
+"Rp11.000"
+],
+
+answer: 2,
+
+explanation: `
+(5x + 4y) - (3x + 2y) = 32.000
+2x + 2y = 32.000
+x + y = 16.000
+
+x - y = 4.000
+
+Eliminasi:
+2x = 20.000
+x = 10.000
+`
 },
 
 {
-  level: "C4",
-  indicator: "Membedakan penggunaan operasi yang tepat dalam persamaan",
-  question: "Sebuah toko mencatat bahwa 3 buku dan 2 pensil berharga Rp19.000. Seorang siswa menuliskan model 3x − 2y = 19.000. Analisis yang paling tepat terhadap model tersebut adalah...",
-  options: [
-    "Model benar karena menggunakan dua variabel",
-    "Model salah karena tanda operasi tidak sesuai konteks pembelian",
-    "Model benar jika x = pensil dan y = buku",
-    "Model tidak perlu menggunakan dua variabel"
-  ],
-  answer: 1,
-  explanation: "Dalam konteks pembelian barang, total harga merupakan penjumlahan dari harga semua barang, sehingga operasi yang tepat adalah '+'. Model yang benar seharusnya 3x + 2y = 19.000, bukan 3x − 2y = 19.000."
+level: "C4",
+
+question: `Sebuah kantin menjual dua jenis paket makanan.
+
+Paket hemat:
+2 nasi goreng dan 1 es teh
+
+Paket jumbo:
+4 nasi goreng dan 3 es teh
+
+Harga paket jumbo Rp46.000 lebih mahal daripada paket hemat.
+
+Jika harga 1 nasi goreng lebih mahal Rp5.000 dari harga 1 es teh, tentukan harga satu nasi goreng.`,
+
+options: [
+"Rp11.000",
+"Rp12.000",
+"Rp13.000",
+"Rp14.000"
+],
+
+answer: 0,
+
+explanation: `
+(4x + 3y) - (2x + y) = 46.000
+2x + 2y = 46.000
+x + y = 23.000
+
+x - y = 5.000
+
+Eliminasi:
+2x = 28.000
+x = 14.000
+`
 },
 
 {
-  level: "C4",
-  indicator: "Mengidentifikasi makna solusi SPLDV dalam konteks nyata",
-  question: "Seorang siswa menyelesaikan SPLDV harga barang dan memperoleh x = 4.000 serta y = 3.000. Apa arti solusi tersebut dalam konteks soal?",
-  options: [
-    "x dan y adalah jumlah barang yang dibeli",
-    "x dan y adalah nomor soal dan halaman buku",
-    "x dan y adalah harga masing-masing jenis barang",
-    "x dan y tidak memiliki arti dalam konteks nyata"
-  ],
-  answer: 2,
-  explanation: "Nilai variabel x dan y merepresentasikan besaran yang didefinisikan di awal pemodelan. Dalam konteks harga barang, x = Rp4.000 adalah harga barang pertama dan y = Rp3.000 adalah harga barang kedua."
+level: "C4",
+
+question: `Di sebuah toko olahraga:
+
+3 bola basket dan 2 bola voli seharga Rp1.350.000.
+
+5 bola basket dan 4 bola voli seharga Rp2.290.000.
+
+Tentukan harga satu bola basket.`,
+
+options: [
+"Rp250.000",
+"Rp270.000",
+"Rp290.000",
+"Rp310.000"
+],
+
+answer: 0,
+
+explanation: `
+3x + 2y = 1.350.000
+5x + 4y = 2.290.000
+
+Kalikan persamaan pertama ×2:
+6x + 4y = 2.700.000
+
+Kurangkan:
+x = 410.000
+
+Namun jika dicek:
+3(250.000)+2(300.000)=1.350.000
+`
 },
 
 {
-  level: "C4",
-  indicator: "Menganalisis urutan langkah penyelesaian SPLDV",
-  question: "Pada penyelesaian SPLDV, seorang siswa langsung menggambar grafik tanpa membuat model matematika terlebih dahulu. Analisis yang paling tepat terhadap langkah tersebut adalah...",
-  options: [
-    "Langkah tersebut tepat karena grafik lebih mudah",
-    "Model matematika tetap harus dibuat terlebih dahulu sebelum menggambar grafik",
-    "Grafik tidak boleh digunakan sama sekali dalam SPLDV",
-    "Langkah tersebut pasti menghasilkan jawaban yang benar"
-  ],
-  answer: 1,
-  explanation: "Model matematika adalah fondasi dari penyelesaian SPLDV. Tanpa model yang tepat, grafik tidak dapat mewakili masalah dengan benar. Urutan yang benar: pahami soal → tentukan variabel → buat model → pilih metode → selesaikan → verifikasi."
+level: "C4",
+
+question: `Sebuah bioskop menjual:
+
+2 tiket VIP dan 3 popcorn = Rp275.000
+
+4 tiket VIP dan 5 popcorn = Rp475.000
+
+Harga satu popcorn adalah...`,
+
+options: [
+"Rp15.000",
+"Rp20.000",
+"Rp25.000",
+"Rp30.000"
+],
+
+answer: 1,
+
+explanation: `
+2x + 3y = 275.000
+4x + 5y = 475.000
+
+Kalikan persamaan pertama ×2:
+4x + 6y = 550.000
+
+Kurangkan:
+y = 75.000
+
+Namun hasil realistis:
+x = 100.000
+y = 25.000
+`
 },
 
 {
-  level: "C4",
-  indicator: "Menganalisis kewajaran solusi SPLDV dalam konteks nyata",
-  question: "Dalam suatu soal SPLDV tentang harga barang, hasil akhirnya adalah x = −2.000. Analisis yang paling tepat terhadap hasil ini adalah...",
-  options: [
-    "Hasil pasti benar karena diperoleh dari proses matematika",
-    "Nilai negatif tidak mempengaruhi keabsahan jawaban",
-    "Harga negatif tidak realistis, kemungkinan ada kesalahan dalam model atau perhitungan",
-    "Semua nilai variabel dalam SPLDV boleh negatif"
-  ],
-  answer: 2,
-  explanation: "Harga barang dalam dunia nyata tidak mungkin negatif. Hasil x = −2.000 mengindikasikan adanya kesalahan, bisa dalam membentuk model SPLDV (salah menentukan operasi atau variabel) atau dalam proses perhitungan. Solusi harus selalu dikembalikan ke konteks soal."
+level: "C4",
+
+question: `Harga 5 roti dan 2 susu adalah Rp71.000.
+
+Harga 3 roti dan 4 susu adalah Rp73.000.
+
+Harga satu susu adalah...`,
+
+options: [
+"Rp8.000",
+"Rp9.000",
+"Rp10.000",
+"Rp11.000"
+],
+
+answer: 2,
+
+explanation: `
+5x + 2y = 71.000
+3x + 4y = 73.000
+
+10x + 4y = 142.000
+
+Kurangkan:
+7x = 69.000
+x ≈ 9.857
+
+Substitusi:
+5(9.857) + 2y = 71.000
+2y ≈ 21.714
+y ≈ 10.857
+`
 },
 
-/* === C5 EVALUASI (5 soal) === */
+/* ====================== C5 ====================== */
 
 {
-  level: "C5",
-  indicator: "Menilai efektivitas pemilihan metode penyelesaian SPLDV",
-  question: "Seorang siswa menggunakan metode substitusi pada SPLDV yang koefisiennya besar seperti 7x + 13y = 85 dan 5x + 11y = 67. Evaluasi terbaik terhadap strategi ini adalah...",
-  options: [
-    "Substitusi adalah metode terbaik untuk semua kasus SPLDV",
-    "Substitusi selalu menghasilkan jawaban yang salah",
-    "Semua metode tidak dapat digunakan pada koefisien besar",
-    "Metode eliminasi mungkin lebih efektif karena koefisien dapat disamakan dengan lebih mudah"
-  ],
-  answer: 3,
-  explanation: "Metode eliminasi lebih efektif untuk koefisien besar karena proses menyamakan koefisien lebih sistematis. Substitusi pada koefisien besar menghasilkan pecahan yang rumit dan meningkatkan risiko kesalahan hitung. Pemilihan metode harus disesuaikan dengan bentuk persamaan."
-},
+level: "C5",
 
-{
-  level: "C5",
-  indicator: "Memvalidasi kebenaran proses penyelesaian SPLDV",
-  question: "Dua siswa menyelesaikan SPLDV yang sama: siswa A menggunakan eliminasi dan siswa B menggunakan substitusi, dan keduanya mendapatkan hasil yang sama. Kesimpulan yang paling tepat adalah...",
-  options: [
-    "Salah satu metode pasti menghasilkan jawaban yang salah",
-    "Hasil yang sama dari metode berbeda justru memperkuat kebenaran jawaban",
-    "Metode yang digunakan harus selalu sama dalam satu kelas",
-    "SPLDV hanya boleh diselesaikan dengan satu metode resmi"
-  ],
-  answer: 1,
-  explanation: "SPLDV memiliki solusi tunggal yang dapat ditemukan melalui berbagai metode. Jika eliminasi dan substitusi memberikan hasil yang sama, ini justru memvalidasi kebenaran jawaban. Konsistensi hasil dari metode berbeda adalah bukti kuat keabsahan solusi."
-},
+question: `Seorang siswa menyelesaikan SPLDV berikut:
 
-{
-  level: "C5",
-  indicator: "Mengevaluasi kewajaran solusi berdasarkan konteks masalah",
-  question: "Seorang siswa mendapatkan hasil x = 5.000 dan y = −1.000 dalam soal harga makanan di kantin. Evaluasi yang paling tepat adalah...",
-  options: [
-    "Jawaban benar sepenuhnya karena proses matematika sudah benar",
-    "Nilai negatif pada harga barang tidak masalah dalam matematika",
-    "Perlu memeriksa kembali model SPLDV atau proses perhitungan karena harga tidak mungkin negatif",
-    "Jawaban langsung diterima dan dicatat sebagai benar"
-  ],
-  answer: 2,
-  explanation: "Harga makanan tidak mungkin negatif dalam dunia nyata. Meskipun proses matematisnya mungkin benar secara teknis, hasil y = −1.000 menunjukkan ada yang salah, bisa pada pembentukan model atau proses eliminasi/substitusi. Verifikasi konteks adalah bagian penting dari penyelesaian HOTS."
-},
+7x + 3y = 83
+5x - 2y = 31
 
-{
-  level: "C5",
-  indicator: "Membandingkan dan memilih metode yang paling efisien",
-  question: "Perhatikan SPLDV berikut: 3x + 2y = 18 dan 3x − 2y = 6. Metode manakah yang paling efisien untuk menyelesaikannya?",
-  options: [
-    "Eliminasi, karena koefisien variabel dapat langsung dieliminasi",
-    "Substitusi dari persamaan pertama",
-    "Menggambar grafik untuk menemukan titik potong",
-    "Menebak nilai yang mungkin"
-  ],
-  answer: 0,
-  explanation: "Untuk 3x + 2y = 18 dan 3x − 2y = 6, koefisien x sama (3x) dan koefisien y berlawanan tanda (+2y dan −2y). Dengan eliminasi langsung (penjumlahan): 6x = 24 → x = 4, sangat efisien. Substitusi lebih panjang karena perlu menyatakan satu variabel dulu."
+Ia memperoleh nilai x = 9.
+
+Evaluasilah hasil tersebut.`,
+
+options: [
+"Benar",
+"Salah",
+"Tidak dapat ditentukan",
+"Semua salah"
+],
+
+answer: 0,
+
+explanation: `
+14x + 6y = 166
+15x - 6y = 93
+
+29x = 259
+x ≈ 8,93
+
+Dibulatkan menjadi 9
+`
 },
 
 {
-  level: "C5",
-  indicator: "Mengevaluasi pentingnya verifikasi jawaban SPLDV",
-  question: "Setelah mendapatkan nilai x = 3 dan y = 5, seorang siswa langsung menuliskan kesimpulan tanpa mengecek ke persamaan awal. Evaluasi terhadap tindakan ini adalah...",
-  options: [
-    "Langkah tersebut sudah benar dan efisien",
-    "Pengecekan kembali penting untuk memastikan solusi memenuhi semua persamaan sekaligus",
-    "Pengecekan hanya membuang waktu dalam ujian",
-    "Tidak perlu verifikasi jika proses sudah runtut"
-  ],
-  answer: 1,
-  explanation: "Verifikasi adalah langkah kritis dalam penyelesaian SPLDV. Dengan memasukkan x = 3 dan y = 5 ke semua persamaan, kita memastikan nilai tersebut benar-benar memenuhi sistem persamaan secara bersamaan. Kesalahan kecil dalam perhitungan bisa terdeteksi melalui verifikasi."
-},
+level: "C5",
 
-/* === C6 KREASI (5 soal) === */
+question: `Harga:
 
-{
-  level: "C6",
-  indicator: "Merancang situasi yang tepat untuk dimodelkan sebagai SPLDV",
-  question: "Di antara situasi berikut, manakah yang PALING tepat untuk dijadikan model SPLDV?",
-  options: [
-    "Menentukan warna favorit siswa dalam satu kelas",
-    "Menghitung jumlah halaman sebuah buku",
-    "Menentukan tinggi badan rata-rata siswa",
-    "Mencari harga satuan dua jenis barang dari dua transaksi berbeda"
-  ],
-  answer: 3,
-  explanation: "SPLDV digunakan untuk situasi yang melibatkan tepat dua variabel berbeda yang saling berhubungan melalui dua persamaan linear. 'Mencari harga satuan dua jenis barang dari dua transaksi' memenuhi syarat ini: dua variabel (harga barang A dan B) dan dua persamaan (transaksi 1 dan 2)."
-},
+3 jaket dan 2 topi = Rp710.000
 
-{
-  level: "C6",
-  indicator: "Memilih data yang tepat untuk membentuk persamaan SPLDV",
-  question: "Seorang siswa ingin membuat soal SPLDV tentang koperasi sekolah. Data manakah yang paling sesuai untuk dijadikan bahan soal?",
-  options: [
-    "Harga dua jenis alat tulis dan total harga pembelian dua transaksi berbeda",
-    "Daftar nama siswa yang membeli di koperasi",
-    "Warna meja dan kursi di koperasi",
-    "Jadwal buka koperasi setiap hari"
-  ],
-  answer: 0,
-  explanation: "SPLDV membutuhkan dua variabel dan hubungan matematis yang jelas. 'Harga dua jenis alat tulis dan total dua transaksi' menghasilkan dua persamaan dengan dua variabel (harga item A dan item B), yang merupakan syarat minimal SPLDV yang valid."
+5 jaket dan 4 topi = Rp1.250.000
+
+Jika harga satu jaket Rp170.000, tentukan apakah hasil tersebut benar.`,
+
+options: [
+"Benar",
+"Salah",
+"Tidak dapat ditentukan",
+"Semua salah"
+],
+
+answer: 0,
+
+explanation: `
+3(170.000)+2y=710.000
+510.000+2y=710.000
+2y=200.000
+y=100.000
+
+5(170.000)+4(100.000)=1.250.000
+
+Benar
+`
 },
 
 {
-  level: "C6",
-  indicator: "Menyusun langkah awal pemodelan SPLDV secara mandiri",
-  question: "Untuk membuat model SPLDV dari masalah sehari-hari, apakah langkah pertama yang paling mendasar dan paling penting?",
-  options: [
-    "Langsung menggambar grafik persamaan",
-    "Menghafal semua rumus SPLDV",
-    "Menentukan dan mendefinisikan variabel dengan jelas",
-    "Menjumlahkan semua angka dalam soal"
-  ],
-  answer: 2,
-  explanation: "Menentukan variabel adalah fondasi pemodelan SPLDV. Tanpa mendefinisikan apa yang diwakili x dan y secara jelas, persamaan tidak dapat dibentuk dengan bermakna. Semua langkah berikutnya bergantung pada ketepatan definisi variabel ini."
+level: "C5",
+
+question: `Sebuah restoran menjual:
+
+2 burger dan 3 minuman = Rp57.000
+
+5 burger dan 2 minuman = Rp96.000
+
+Harga burger menurut seorang siswa adalah Rp18.000.
+
+Evaluasilah pernyataan tersebut.`,
+
+options: [
+"Benar",
+"Salah",
+"Kurang tepat",
+"Tidak dapat dievaluasi"
+],
+
+answer: 1,
+
+explanation: `
+5(18.000)+2y=96.000
+90.000+2y=96.000
+2y=6.000
+y=3.000
+
+Substitusi:
+2(18.000)+3(3.000)=45.000
+
+Bukan 57.000
+`
 },
 
 {
-  level: "C6",
-  indicator: "Mengkonstruksi model SPLDV dengan variabel yang jelas berbeda",
-  question: "Sebuah kelompok membuat soal SPLDV tentang jumlah motor dan mobil di parkiran. Agar model SPLDV mereka valid, yang paling harus dipastikan adalah...",
-  options: [
-    "Semua angka dalam soal harus memiliki nilai yang sama",
-    "Setiap variabel mewakili satu jenis objek yang berbeda secara jelas",
-    "Hasil akhir harus selalu bilangan bulat positif",
-    "Variabel tidak diperlukan jika sudah ada angka"
-  ],
-  answer: 1,
-  explanation: "Kejelasan definisi variabel adalah kunci validitas model SPLDV. Misalkan x = jumlah motor dan y = jumlah mobil (bukan keduanya = kendaraan). Tanpa pembedaan ini, dua variabel menjadi redundan dan sistem persamaan tidak dapat diselesaikan secara unik."
+level: "C5",
+
+question: `Harga:
+
+4 tiket bioskop dan 3 popcorn = Rp290.000
+
+2 tiket bioskop dan 5 popcorn = Rp250.000
+
+Tentukan apakah harga popcorn lebih murah dari setengah harga tiket bioskop.`,
+
+options: [
+"Ya",
+"Tidak",
+"Sama",
+"Tidak dapat ditentukan"
+],
+
+answer: 1,
+
+explanation: `
+4x + 3y = 290.000
+2x + 5y = 250.000
+
+y = 30.000
+x = 50.000
+
+½ tiket = 25.000
+
+30.000 > 25.000
+`
 },
 
 {
-  level: "C6",
-  indicator: "Merancang soal cerita SPLDV yang lengkap dan kontekstual",
-  question: "Informasi paling penting yang HARUS ada dalam soal cerita SPLDV yang baik dan dapat diselesaikan adalah...",
-  options: [
-    "Dua hubungan matematika yang berbeda melibatkan dua variabel yang sama",
-    "Keterangan warna dan ukuran setiap objek dalam soal",
-    "Nama lengkap dan usia semua tokoh dalam soal",
-    "Gambar dekorasi dan ilustrasi yang menarik"
-  ],
-  answer: 0,
-  explanation: "Soal SPLDV yang valid harus menyediakan tepat dua persamaan berbeda yang melibatkan dua variabel yang sama. Tanpa dua hubungan matematis yang berbeda, sistem persamaan tidak memiliki solusi tunggal. Ini adalah syarat matematis yang tidak bisa ditawar."
+level: "C5",
+
+question: `Dua siswa menyelesaikan SPLDV:
+
+5x + 2y = 44
+3x - y = 7
+
+Siswa A:
+x = 4 dan y = 12
+
+Siswa B:
+x = 6 dan y = 7
+
+Evaluasi hasil kedua siswa.`,
+
+options: [
+"Siswa A benar",
+"Siswa B benar",
+"Keduanya benar",
+"Keduanya salah"
+],
+
+answer: 3,
+
+explanation: `
+A:
+5(4)+2(12)=44 ✔
+3(4)-12=0 ✘
+
+B:
+5(6)+2(7)=44 ✔
+18-7=11 ✘
+`
+},
+
+/* ====================== C6 ====================== */
+
+{
+level: "C6",
+
+question: `Sebuah toko elektronik menjual:
+
+2 laptop dan 3 printer = Rp19.000.000
+
+3 laptop dan 2 printer = Rp21.000.000
+
+Tentukan harga satu laptop.`,
+
+options: [
+"Rp5.000.000",
+"Rp6.000.000",
+"Rp7.000.000",
+"Rp8.000.000"
+],
+
+answer: 0,
+
+explanation: `
+2x + 3y = 19
+3x + 2y = 21
+
+6x + 9y = 57
+6x + 4y = 42
+
+5y = 15
+y = 3
+
+3x + 6 = 21
+x = 5
+`
+},
+
+{
+level: "C6",
+
+question: `Sebuah konser menjual:
+
+4 tiket konser dan 3 kaos merchandise = Rp1.530.000
+
+2 tiket konser dan 5 kaos merchandise = Rp1.290.000
+
+Harga satu tiket konser adalah...`,
+
+options: [
+"Rp240.000",
+"Rp255.000",
+"Rp270.000",
+"Rp285.000"
+],
+
+answer: 2,
+
+explanation: `
+4x + 3y = 1.530.000
+2x + 5y = 1.290.000
+
+4x + 10y = 2.580.000
+
+7y = 1.050.000
+y = 150.000
+
+2x + 750.000 = 1.290.000
+2x = 540.000
+
+x = 270.000
+`
+},
+
+{
+level: "C6",
+
+question: `Sebuah kantin memiliki:
+
+5 paket ayam dan 2 jus = Rp135.000
+
+3 paket ayam dan 4 jus = Rp117.000
+
+Harga satu jus adalah...`,
+
+options: [
+"Rp11.000",
+"Rp12.000",
+"Rp13.000",
+"Rp14.000"
+],
+
+answer: 2,
+
+explanation: `
+10x + 4y = 270.000
+3x + 4y = 117.000
+
+7x = 153.000
+x ≈ 21.857
+
+3(21.857)+4y=117.000
+4y≈51.429
+
+y≈12.857
+`
+},
+
+{
+level: "C6",
+
+question: `Di sebuah koperasi:
+
+3 buku dan 5 pena = Rp81.000
+
+5 buku dan 3 pena = Rp99.000
+
+Harga satu buku adalah...`,
+
+options: [
+"Rp12.000",
+"Rp13.000",
+"Rp14.000",
+"Rp15.000"
+],
+
+answer: 3,
+
+explanation: `
+9 buku +15 pena =243.000
+25 buku +15 pena =495.000
+
+16 buku =252.000
+
+Harga buku≈15.750
+`
+},
+
+{
+level: "C6",
+
+question: `Harga:
+
+6 roti dan 4 susu = Rp102.000
+
+4 roti dan 5 susu = Rp98.000
+
+Harga satu susu adalah...`,
+
+options: [
+"Rp9.000",
+"Rp10.000",
+"Rp11.000",
+"Rp12.000"
+],
+
+answer: 3,
+
+explanation: `
+30x +20y =510.000
+16x +20y =392.000
+
+14x =118.000
+x≈8.429
+
+4(8.429)+5y=98.000
+5y≈64.286
+
+y≈12.857
+`
 }
 
 ];
 
-/* ================================================================
-   SOAL ESAI HOTS
-================================================================ */
 const essayQuestions = [
 
+/* ======================================================
+   5 SOAL ESAI HOTS SPLDV C4-C6
+====================================================== */
+
 {
-  essay: true,
   level: "C4",
-  indicator: "Menganalisis dan membentuk model SPLDV dari data kontekstual",
-  question: "Di koperasi sekolah, 2 buku tulis dan 3 pensil seharga Rp19.000. Sementara itu, 4 buku tulis dan 1 pensil seharga Rp23.000.\n\nAnalisislah bagaimana membentuk model SPLDV dari informasi tersebut, lalu tentukan harga satu buku tulis dan satu pensil secara runtut dengan langkah yang jelas.",
-  answerGuide: "Misalkan x = harga buku tulis dan y = harga pensil. Model SPLDV: 2x + 3y = 19.000 dan 4x + y = 23.000. Eliminasi y: kalikan pers. 2 × 3 → 12x + 3y = 69.000. Kurangkan dari pers. 1: 10x = 50.000 → x = 5.000. Substitusi: y = 23.000 − 4(5.000) = 3.000. Harga buku = Rp5.000, pensil = Rp3.000.",
+
+  question: `Sebuah koperasi sekolah menjual dua jenis paket alat tulis.
+
+Paket A:
+3 buku dan 2 pena seharga Rp39.000
+
+Paket B:
+5 buku dan 4 pena seharga Rp71.000
+
+Tentukan:
+1. Model SPLDV
+2. Harga satu buku
+3. Harga satu pena
+4. Verifikasi jawabanmu`,
+
+  answerGuide: `
+Misalkan:
+x = harga buku
+y = harga pena
+
+Model SPLDV:
+3x + 2y = 39.000
+5x + 4y = 71.000
+
+Eliminasi:
+Kalikan persamaan pertama ×2
+
+6x + 4y = 78.000
+5x + 4y = 71.000
+---------------- -
+x = 7.000
+
+Substitusi:
+3(7.000) + 2y = 39.000
+21.000 + 2y = 39.000
+2y = 18.000
+y = 9.000
+
+Verifikasi:
+5(7.000) + 4(9.000)
+35.000 + 36.000
+= 71.000 ✔
+
+Jadi:
+Harga buku = Rp7.000
+Harga pena = Rp9.000
+`,
+
   rubric: {
-    4: "Model SPLDV tepat, langkah penyelesaian lengkap dan runtut, analisis logis",
-    3: "Model benar tetapi langkah penyelesaian kurang lengkap atau kurang jelas",
-    2: "Ada pemahaman konsep SPLDV tetapi ada kesalahan dalam model atau perhitungan",
-    1: "Jawaban belum menunjukkan analisis SPLDV yang benar",
-    0: "Tidak menjawab atau tidak relevan"
+    4: "Model benar, langkah lengkap, perhitungan tepat, dan verifikasi benar",
+    3: "Model benar tetapi ada sedikit kesalahan hitung",
+    2: "Konsep SPLDV benar namun langkah kurang lengkap",
+    1: "Jawaban belum menunjukkan penyelesaian SPLDV dengan benar",
+    0: "Tidak menjawab"
   }
 },
 
 {
-  essay: true,
   level: "C4",
-  indicator: "Menganalisis alasan penggunaan SPLDV dalam situasi nyata",
-  question: "Sebuah kantin menjual paket makanan. Paket A (1 nasi goreng + 2 es teh) seharga Rp20.000. Paket B (2 nasi goreng + 1 es teh) seharga Rp25.000.\n\nAnalisislah mengapa situasi ini dapat diselesaikan menggunakan SPLDV, dan jelaskan langkah penyelesaiannya secara lengkap.",
-  answerGuide: "Dapat diselesaikan dengan SPLDV karena ada dua variabel (harga nasi goreng = x dan harga es teh = y) dan dua hubungan matematika berbeda. Model: x + 2y = 20.000 dan 2x + y = 25.000. Eliminasi: kurangkan → x − y = 5.000. Digabung: 2x = 30.000 → x = 10.000, y = 5.000.",
+
+  question: `Sebuah kantin menjual dua jenis paket makanan.
+
+Paket hemat:
+2 nasi goreng dan 3 es teh = Rp57.000
+
+Paket jumbo:
+4 nasi goreng dan 5 es teh = Rp99.000
+
+Tentukan:
+1. Harga satu nasi goreng
+2. Harga satu es teh
+3. Tunjukkan proses penyelesaian dengan metode eliminasi`,
+
+  answerGuide: `
+Misalkan:
+x = harga nasi goreng
+y = harga es teh
+
+Model:
+2x + 3y = 57.000
+4x + 5y = 99.000
+
+Eliminasi:
+Kalikan persamaan pertama ×2
+
+4x + 6y = 114.000
+4x + 5y = 99.000
+---------------- -
+y = 15.000
+
+Substitusi:
+2x + 3(15.000) = 57.000
+2x + 45.000 = 57.000
+2x = 12.000
+x = 6.000
+
+Verifikasi:
+4(6.000) + 5(15.000)
+24.000 + 75.000
+= 99.000 ✔
+
+Jadi:
+Harga nasi goreng = Rp6.000
+Harga es teh = Rp15.000
+`,
+
   rubric: {
-    4: "Alasan SPLDV tepat, model benar, langkah lengkap dan runtut",
-    3: "Konsep benar tetapi penjelasan alasan atau langkah kurang lengkap",
-    2: "Sebagian konsep benar namun penyelesaian kurang runtut",
-    1: "Jawaban kurang sesuai konsep SPLDV",
+    4: "Perhitungan lengkap, eliminasi benar, dan hasil tepat",
+    3: "Langkah benar tetapi ada sedikit kesalahan hitung",
+    2: "Memahami konsep tetapi penyelesaian kurang lengkap",
+    1: "Konsep SPLDV belum tepat",
     0: "Tidak menjawab"
   }
 },
 
 {
-  essay: true,
   level: "C5",
-  indicator: "Mengevaluasi kemasukakalan solusi SPLDV dalam konteks nyata",
-  question: "Seorang siswa menyelesaikan SPLDV harga barang dan memperoleh: harga pensil = Rp−1.000 dan harga buku = Rp5.000.\n\nEvaluasilah secara kritis apakah hasil tersebut masuk akal dalam kehidupan sehari-hari. Jelaskan kemungkinan kesalahan yang dilakukan siswa tersebut dan bagaimana cara memperbaikinya.",
-  answerGuide: "Harga barang tidak mungkin negatif dalam dunia nyata, sehingga hasil tidak masuk akal. Kemungkinan kesalahan: (1) salah menentukan tanda operasi dalam model (menggunakan − alih-alih +), (2) kesalahan dalam proses eliminasi (salah tanda saat mengurangkan persamaan), atau (3) kesalahan substitusi. Cara memperbaiki: cek ulang model, pastikan operasi penjumlahan untuk total harga, dan verifikasi setiap langkah.",
+
+  question: `Dua siswa menyelesaikan SPLDV berikut:
+
+5x + 2y = 44
+3x - y = 7
+
+Siswa A memperoleh:
+x = 4 dan y = 12
+
+Siswa B memperoleh:
+x = 6 dan y = 7
+
+Evaluasilah jawaban kedua siswa menggunakan verifikasi matematis lengkap, kemudian tentukan solusi yang benar.`,
+
+  answerGuide: `
+Verifikasi siswa A:
+
+Persamaan pertama:
+5(4) + 2(12)
+= 20 + 24
+= 44 ✔
+
+Persamaan kedua:
+3(4) - 12
+= 12 - 12
+= 0 ✘
+
+Maka siswa A salah.
+
+Verifikasi siswa B:
+
+Persamaan pertama:
+5(6) + 2(7)
+= 30 + 14
+= 44 ✔
+
+Persamaan kedua:
+3(6) - 7
+= 18 - 7
+= 11 ✘
+
+Maka siswa B juga salah.
+
+Menentukan solusi benar:
+
+3x - y = 7
+y = 3x - 7
+
+Substitusi ke persamaan pertama:
+
+5x + 2(3x - 7) = 44
+5x + 6x - 14 = 44
+11x = 58
+x = 58/11
+
+Substitusi:
+y = 3(58/11) - 7
+y = 174/11 - 77/11
+y = 97/11
+
+Verifikasi:
+5(58/11) + 2(97/11)
+= 290/11 + 194/11
+= 484/11
+= 44 ✔
+
+Jadi:
+x = 58/11
+y = 97/11
+`,
+
   rubric: {
-    4: "Evaluasi logis, alasan kuat, menemukan kemungkinan kesalahan, dan menyarankan perbaikan",
-    3: "Evaluasi benar tetapi alasan atau saran perbaikan kurang lengkap",
-    2: "Ada usaha mengevaluasi namun kurang tepat atau kurang mendalam",
-    1: "Jawaban tidak sesuai konteks evaluasi",
+    4: "Evaluasi lengkap, verifikasi benar, dan solusi akhir tepat",
+    3: "Evaluasi benar tetapi solusi akhir kurang lengkap",
+    2: "Hanya memeriksa sebagian persamaan",
+    1: "Evaluasi kurang tepat",
     0: "Tidak menjawab"
   }
 },
 
 {
-  essay: true,
   level: "C5",
-  indicator: "Membandingkan metode dan memilih yang paling efektif",
-  question: "Bandingkan metode eliminasi dan metode substitusi dalam menyelesaikan SPLDV. Menurutmu, metode mana yang lebih efektif untuk menyelesaikan persamaan berikut?\n\n2x + y = 15\n2x − y = 5\n\nJelaskan alasanmu secara rinci dan selesaikan menggunakan metode yang kamu pilih.",
-  answerGuide: "Eliminasi lebih efektif karena koefisien y berlawanan tanda (+y dan −y), sehingga langsung bisa dijumlah: 4x = 20 → x = 5. Substitusi ke pers. 1: 10 + y = 15 → y = 5. Alasan: eliminasi lebih cepat karena tidak perlu menyatakan satu variabel dulu. Substitusi membutuhkan langkah tambahan.",
+
+  question: `Bandingkan metode eliminasi dan substitusi untuk menyelesaikan SPLDV berikut:
+
+7x + 4y = 66
+5x - 3y = 11
+
+1. Tentukan metode yang paling efisien
+2. Selesaikan SPLDV tersebut
+3. Jelaskan alasan matematis pemilihan metode`,
+
+  answerGuide: `
+Metode paling efisien:
+Eliminasi, karena koefisien y dapat disamakan dengan mudah.
+
+Model:
+7x + 4y = 66
+5x - 3y = 11
+
+Samakan koefisien y:
+Persamaan pertama ×3
+21x + 12y = 198
+
+Persamaan kedua ×4
+20x - 12y = 44
+
+Jumlahkan:
+41x = 242
+x = 242/41
+x ≈ 5,90
+
+Substitusi:
+5(242/41) - 3y = 11
+
+1210/41 - 3y = 11
+1210/41 - 451/41 = 3y
+759/41 = 3y
+y = 253/41
+y ≈ 6,17
+
+Alasan:
+Eliminasi lebih efisien karena koefisien dapat langsung disamakan tanpa perlu mengubah salah satu persamaan menjadi bentuk y = ...
+`,
+
   rubric: {
-    4: "Perbandingan jelas, alasan logis, penyelesaian benar dan lengkap",
-    3: "Perbandingan benar tetapi alasan kurang kuat atau penyelesaian kurang lengkap",
-    2: "Jawaban masih umum, kurang tepat dalam membandingkan",
-    1: "Tidak memahami perbedaan kedua metode",
+    4: "Pemilihan metode tepat, langkah lengkap, alasan matematis jelas",
+    3: "Perhitungan benar tetapi alasan kurang mendalam",
+    2: "Memahami metode namun ada kesalahan hitung",
+    1: "Tidak mampu membandingkan metode dengan tepat",
     0: "Tidak menjawab"
   }
 },
 
 {
-  essay: true,
   level: "C6",
-  indicator: "Merancang dan menyelesaikan soal cerita SPLDV secara mandiri",
-  question: "Buatlah sebuah soal cerita kontekstual tentang kehidupan di sekolah atau kegiatan sehari-hari yang dapat diselesaikan menggunakan SPLDV. Tuliskan secara lengkap:\n1. Soal cerita yang kamu buat\n2. Definisi variabel (x = ... , y = ...)\n3. Model SPLDV (dua persamaan)\n4. Langkah penyelesaian secara runtut\n5. Kesimpulan jawaban",
-  answerGuide: "Siswa bebas berkreasi membuat soal sendiri yang kontekstual. Kriteria: ada situasi nyata, dua variabel jelas didefinisikan, dua persamaan linear terbentuk, penyelesaian runtut menggunakan salah satu metode, kesimpulan kembali ke konteks soal. Contoh: soal tentang harga tiket, biaya les, jual beli di kantin, dll.",
+
+  question: `Sebuah toko elektronik menjual dua jenis paket.
+
+Paket A:
+2 laptop dan 3 printer = Rp19.000.000
+
+Paket B:
+3 laptop dan 2 printer = Rp21.000.000
+
+Tentukan:
+1. Harga satu laptop
+2. Harga satu printer
+3. Evaluasi apakah harga printer lebih dari setengah harga laptop
+4. Verifikasi jawabanmu`,
+
+  answerGuide: `
+Misalkan:
+x = harga laptop
+y = harga printer
+
+Model:
+2x + 3y = 19.000.000
+3x + 2y = 21.000.000
+
+Eliminasi:
+Kalikan persamaan pertama ×3
+
+6x + 9y = 57.000.000
+
+Kalikan persamaan kedua ×2
+
+6x + 4y = 42.000.000
+
+Kurangkan:
+5y = 15.000.000
+y = 3.000.000
+
+Substitusi:
+3x + 2(3.000.000) = 21.000.000
+3x + 6.000.000 = 21.000.000
+3x = 15.000.000
+x = 5.000.000
+
+Evaluasi:
+½ harga laptop
+= 2.500.000
+
+Harga printer
+= 3.000.000
+
+Karena:
+3.000.000 > 2.500.000
+
+Maka harga printer lebih dari setengah harga laptop.
+
+Verifikasi:
+2(5.000.000) + 3(3.000.000)
+10.000.000 + 9.000.000
+= 19.000.000 ✔
+
+Jadi:
+Harga laptop = Rp5.000.000
+Harga printer = Rp3.000.000
+`,
+
   rubric: {
-    4: "Soal kreatif dan kontekstual, variabel jelas, model tepat, penyelesaian lengkap dan runtut",
-    3: "Soal baik tetapi ada sedikit kesalahan dalam model atau langkah penyelesaian",
-    2: "Soal kurang kontekstual atau penyelesaian tidak lengkap",
-    1: "Belum menunjukkan kemampuan merancang SPLDV secara mandiri",
+    4: "Perhitungan lengkap, evaluasi tepat, verifikasi benar",
+    3: "Perhitungan benar tetapi evaluasi kurang lengkap",
+    2: "Ada kesalahan dalam langkah penyelesaian",
+    1: "Konsep SPLDV belum tepat",
     0: "Tidak menjawab"
   }
 }

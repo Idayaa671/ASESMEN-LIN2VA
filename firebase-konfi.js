@@ -11,12 +11,14 @@
    ================================================================ */
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyBchXzuAzEZZbcAuv3nbBLaAsnpqtl4iL8",
+  authDomain: "asesmen-7fb67.firebaseapp.com",
+  databaseURL: "https://asesmen-7fb67-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "asesmen-7fb67",
+  storageBucket: "asesmen-7fb67.firebasestorage.app",
+  messagingSenderId: "873602548184",
+  appId: "1:873602548184:web:2ec5c69ab1bbdc60be72ad",
+  measurementId: "G-0MC5PSK0YN"
 };
 
 // Inisialisasi Firebase
