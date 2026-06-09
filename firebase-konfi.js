@@ -27,7 +27,7 @@ let firebaseReady = false;
 
 try {
   firebase.initializeApp(firebaseConfig);
-  db = firebase.firestore();
+  db = firebase.database();
   firebaseReady = true;
   console.log("✅ Firebase berhasil terhubung");
 } catch(e) {
@@ -41,8 +41,7 @@ try {
 async function simpanHasilFirebase(dataSiswa) {
   if (firebaseReady && db) {
     try {
-      await db.collection("hasilSPLDV").add({
-        ...dataSiswa,
+      await db.ref("hasilSPLDV").push({
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       });
       console.log("✅ Data tersimpan di Firebase Firestore");
@@ -64,14 +63,19 @@ async function simpanHasilFirebase(dataSiswa) {
 async function bacaDataFirebase() {
   if (firebaseReady && db) {
     try {
-      const snapshot = await db.collection("hasilSPLDV")
-        .orderBy("timestamp", "desc")
-        .get();
+      const snapshot = await db.ref("hasilSPLDV").once("value");
 
-      let data = [];
-      snapshot.forEach(doc => {
-        data.push({ id: doc.id, ...doc.data() });
-      });
+let data = [];
+
+snapshot.forEach(child => {
+
+  data.push({
+    id: child.key,
+    ...child.val()
+  });
+
+});
+
       return { source: "firebase", data };
     } catch(e) {
       console.error("Firebase read error:", e);
@@ -90,10 +94,7 @@ async function bacaDataFirebase() {
 async function hapusSemuaDataFirebase() {
   if (firebaseReady && db) {
     try {
-      const snapshot = await db.collection("hasilSPLDV").get();
-      const batch = db.batch();
-      snapshot.docs.forEach(doc => batch.delete(doc.ref));
-      await batch.commit();
+      await db.ref("hasilSPLDV").remove();
       return true;
     } catch(e) {
       console.error("Firebase delete error:", e);
