@@ -88,7 +88,7 @@ options: [
 "Rp11.000"
 ],
 
-answer: 3,
+answer: 2,
 
 explanation: `
 (5x + 4y) - (3x + 2y) = 32.000
@@ -99,7 +99,9 @@ x - y = 4.000
 
 Eliminasi:
 2x = 20.000
-x = 10.000
+x = 10.000 
+jawaban yang benar adalah Rp10.000 
+[C]
 `
 },
 
@@ -137,6 +139,8 @@ x - y = 5.000
 Eliminasi:
 2x = 28.000
 x = 14.000
+jawaban yang benar adalah Rp14.000
+[D]
 `
 },
 
@@ -153,12 +157,12 @@ Tentukan harga satu bola basket.`,
 
 options: [
 "Rp270.000",
+"Rp250.000",
 "Rp290.000",
-"Rp310.000",
-"Rp250.000"
+"Rp310.000"
 ],
 
-answer: 3,
+answer: 1,
 
 explanation: `
 3x + 2y = 1.350.000
@@ -172,6 +176,8 @@ x = 410.000
 
 Namun jika dicek:
 3(250.000)+2(300.000)=1.350.000
+maka jawaban yang benar adalah Rp250.000
+B
 `
 },
 
@@ -207,7 +213,8 @@ y = 75.000
 
 Namun hasil realistis:
 x = 100.000
-y = 25.000
+y = 25.000 maka jawabanya adalah Rp25.000
+C
 `
 },
 
@@ -243,7 +250,9 @@ Substitusi:
 5(9.857) + 2y = 71.000
 2y ≈ 21.714
 y ≈ 10.857
-jika di bulatkan menjadi y=11.000
+di bulatkan menjadi y=11.000
+maka jawaban yang benar adalah Rp11.000
+D
 `
 },
 
@@ -278,6 +287,8 @@ explanation: `
 x ≈ 8,93
 
 Dibulatkan menjadi 9
+maka jawaban yang benar adalah Benar
+A
 `
 },
 
@@ -310,6 +321,7 @@ y=100.000
 5(170.000)+4(100.000)=1.250.000
 
 Benar
+A
 `
 },
 
@@ -345,6 +357,8 @@ Substitusi:
 2(18.000)+3(3.000)=45.000
 
 Bukan 57.000
+maka jawaban yang benar adalah Salah
+B
 `
 },
 
@@ -378,6 +392,8 @@ x = 50.000
 ½ tiket = 25.000
 
 30.000 > 25.000
+maka jawaban yang benar adalah Tidak
+B
 `
 },
 
@@ -414,6 +430,8 @@ A:
 B:
 5(6)+2(7)=44 ✔
 18-7=11 ✘
+Maka keduanya salah
+D
 `
 },
 
@@ -451,6 +469,8 @@ y = 3
 
 3x + 6 = 21
 x = 5
+jawabanya adalah Rp5.000.000
+A
 `
 },
 
@@ -487,6 +507,8 @@ y = 150.000
 2x = 540.000
 
 x = 270.000
+maka jawaban yang benar adalah Rp270.000
+C
 `
 },
 
@@ -522,6 +544,8 @@ x ≈ 21.857
 
 y≈12.857 
 di bulatkan menjadi 13.000
+maka jawaban yang benar adalah Rp13.000
+C
 `
 },
 
@@ -553,6 +577,8 @@ explanation: `
 
 Harga buku≈15.750 
 jika di bulatkan menjadi 16.000
+maka jawaban yang benar adalah Rp16.000
+D
 `
 },
 
@@ -588,6 +614,8 @@ x≈8.429
 
 y≈12.857
 di bulatkan menjadi 13.000
+maka jawaban yang benar adalah Rp13.000
+D
 `
 }
 
