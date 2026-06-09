@@ -88,7 +88,7 @@ options: [
 "Rp11.000"
 ],
 
-answer: 2,
+answer: 3,
 
 explanation: `
 (5x + 4y) - (3x + 2y) = 32.000
@@ -125,7 +125,7 @@ options: [
 "Rp14.000"
 ],
 
-answer: 0,
+answer: 3,
 
 explanation: `
 (4x + 3y) - (2x + y) = 46.000
@@ -152,13 +152,13 @@ question: `Di sebuah toko olahraga:
 Tentukan harga satu bola basket.`,
 
 options: [
-"Rp250.000",
 "Rp270.000",
 "Rp290.000",
-"Rp310.000"
+"Rp310.000",
+"Rp250.000"
 ],
 
-answer: 0,
+answer: 3,
 
 explanation: `
 3x + 2y = 1.350.000
@@ -193,7 +193,7 @@ options: [
 "Rp30.000"
 ],
 
-answer: 1,
+answer: 2,
 
 explanation: `
 2x + 3y = 275.000
@@ -227,7 +227,7 @@ options: [
 "Rp11.000"
 ],
 
-answer: 2,
+answer: 3,
 
 explanation: `
 5x + 2y = 71.000
@@ -243,6 +243,7 @@ Substitusi:
 5(9.857) + 2y = 71.000
 2y ≈ 21.714
 y ≈ 10.857
+jika di bulatkan menjadi y=11.000
 `
 },
 
@@ -519,7 +520,8 @@ x ≈ 21.857
 3(21.857)+4y=117.000
 4y≈51.429
 
-y≈12.857
+y≈12.857 
+di bulatkan menjadi 13.000
 `
 },
 
@@ -538,7 +540,7 @@ options: [
 "Rp12.000",
 "Rp13.000",
 "Rp14.000",
-"Rp15.000"
+"Rp16.000"
 ],
 
 answer: 3,
@@ -549,7 +551,8 @@ explanation: `
 
 16 buku =252.000
 
-Harga buku≈15.750
+Harga buku≈15.750 
+jika di bulatkan menjadi 16.000
 `
 },
 
@@ -568,7 +571,7 @@ options: [
 "Rp9.000",
 "Rp10.000",
 "Rp11.000",
-"Rp12.000"
+"Rp13.000"
 ],
 
 answer: 3,
@@ -584,6 +587,7 @@ x≈8.429
 5y≈64.286
 
 y≈12.857
+di bulatkan menjadi 13.000
 `
 }
 
