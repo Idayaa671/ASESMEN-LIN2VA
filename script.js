@@ -177,7 +177,7 @@ x = 410.000
 Namun jika dicek:
 3(250.000)+2(300.000)=1.350.000
 maka jawaban yang benar adalah Rp250.000
-B
+[B]
 `
 },
 
@@ -214,7 +214,7 @@ y = 75.000
 Namun hasil realistis:
 x = 100.000
 y = 25.000 maka jawabanya adalah Rp25.000
-C
+[C]
 `
 },
 
@@ -252,7 +252,7 @@ Substitusi:
 y ≈ 10.857
 di bulatkan menjadi y=11.000
 maka jawaban yang benar adalah Rp11.000
-D
+[D]
 `
 },
 
@@ -288,7 +288,7 @@ x ≈ 8,93
 
 Dibulatkan menjadi 9
 maka jawaban yang benar adalah Benar
-A
+[A]
 `
 },
 
@@ -321,7 +321,7 @@ y=100.000
 5(170.000)+4(100.000)=1.250.000
 
 Benar
-A
+[A]
 `
 },
 
@@ -358,7 +358,7 @@ Substitusi:
 
 Bukan 57.000
 maka jawaban yang benar adalah Salah
-B
+[B]
 `
 },
 
@@ -393,7 +393,7 @@ x = 50.000
 
 30.000 > 25.000
 maka jawaban yang benar adalah Tidak
-B
+[B]
 `
 },
 
@@ -431,7 +431,7 @@ B:
 5(6)+2(7)=44 ✔
 18-7=11 ✘
 Maka keduanya salah
-D
+[D]
 `
 },
 
@@ -470,7 +470,7 @@ y = 3
 3x + 6 = 21
 x = 5
 jawabanya adalah Rp5.000.000
-A
+[A]
 `
 },
 
@@ -508,7 +508,7 @@ y = 150.000
 
 x = 270.000
 maka jawaban yang benar adalah Rp270.000
-C
+[C]
 `
 },
 
@@ -545,7 +545,7 @@ x ≈ 21.857
 y≈12.857 
 di bulatkan menjadi 13.000
 maka jawaban yang benar adalah Rp13.000
-C
+[C]
 `
 },
 
@@ -578,7 +578,7 @@ explanation: `
 Harga buku≈15.750 
 jika di bulatkan menjadi 16.000
 maka jawaban yang benar adalah Rp16.000
-D
+[D]
 `
 },
 
@@ -615,7 +615,7 @@ x≈8.429
 y≈12.857
 di bulatkan menjadi 13.000
 maka jawaban yang benar adalah Rp13.000
-D
+[D]
 `
 }
 
@@ -956,7 +956,7 @@ Harga printer = Rp3.000.000
   }
 }
 
-];
+]; 
 
 /* ================================================================
    MULAI QUIZ
@@ -1407,9 +1407,100 @@ function lihatPenilaian() {
 }
 
 /* ================================================================
-   DASHBOARD
+   DASHBOARD — PROTEKSI KODE AKSES GURU
 ================================================================ */
-async function showDashboard() {
+
+// Kode akses guru (ubah sesuai kebutuhan)
+const KODE_GURU = "LIN2VA2025";
+
+// Status sesi: apakah guru sudah login di sesi ini
+let guruSudahLogin = false;
+
+function showDashboard() {
+  if (guruSudahLogin) {
+    bukaDashboard();
+  } else {
+    tampilkanModalKode();
+  }
+}
+
+function tampilkanModalKode() {
+  // Hapus modal lama jika ada
+  let existing = document.getElementById("modal-kode-guru");
+  if (existing) existing.remove();
+
+  let modal = document.createElement("div");
+  modal.id = "modal-kode-guru";
+  modal.className = "modal-overlay";
+  modal.innerHTML = `
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-icon">🔐</div>
+      <h2 id="modal-title">Akses Khusus Guru</h2>
+      <p>Dashboard nilai hanya dapat diakses oleh guru.<br>Masukkan kode akses untuk melanjutkan.</p>
+      <div class="modal-input-wrap">
+        <input
+          type="password"
+          id="input-kode-guru"
+          placeholder="Masukkan kode akses"
+          maxlength="20"
+          autocomplete="off"
+          onkeydown="if(event.key==='Enter') periksaKodeGuru()"
+        >
+        <button class="btn-toggle-pw" onclick="togglePasswordVisibility()" title="Tampilkan/sembunyikan kode" aria-label="Toggle visibility">👁</button>
+      </div>
+      <div id="modal-error" class="modal-error hidden">❌ Kode salah! Silakan coba lagi.</div>
+      <div class="modal-actions">
+        <button class="btn-modal-batal" onclick="tutupModalKode()">← Batal</button>
+        <button class="btn-modal-masuk" onclick="periksaKodeGuru()">🔓 Masuk</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  // Fokus otomatis ke input
+  setTimeout(() => {
+    let inputEl = document.getElementById("input-kode-guru");
+    if (inputEl) inputEl.focus();
+  }, 100);
+}
+
+function periksaKodeGuru() {
+  let inputEl = document.getElementById("input-kode-guru");
+  let errorEl = document.getElementById("modal-error");
+  let kodeInput = inputEl ? inputEl.value.trim() : "";
+
+  if (kodeInput === KODE_GURU) {
+    guruSudahLogin = true;
+    tutupModalKode();
+    bukaDashboard();
+  } else {
+    // Tampilkan pesan error dengan animasi shake
+    errorEl.classList.remove("hidden");
+    let box = document.querySelector(".modal-box");
+    if (box) {
+      box.classList.add("shake");
+      setTimeout(() => box.classList.remove("shake"), 500);
+    }
+    inputEl.value = "";
+    inputEl.focus();
+  }
+}
+
+function tutupModalKode() {
+  let modal = document.getElementById("modal-kode-guru");
+  if (modal) {
+    modal.classList.add("modal-fadeout");
+    setTimeout(() => modal.remove(), 250);
+  }
+}
+
+function togglePasswordVisibility() {
+  let inputEl = document.getElementById("input-kode-guru");
+  if (!inputEl) return;
+  inputEl.type = inputEl.type === "password" ? "text" : "password";
+}
+
+async function bukaDashboard() {
   hideAll();
   document.getElementById("dashboard-screen").classList.remove("hidden");
   window.scrollTo(0, 0);
